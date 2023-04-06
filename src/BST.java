@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 
 /**
  * An Integer Binary Search Tree
@@ -48,7 +51,28 @@ public class BST {
      */
     public boolean search(int val) {
         // TODO: Complete the search function
-        return false;
+        // If val is in the tree, return true
+        if (root.getVal() == val) {
+            return true;
+        }
+        return searchHelp(root, val);
+    }
+
+    public boolean searchHelp(BSTNode node, int val){
+        if (node.getVal() == val) {
+            return true;
+        }
+        if (node.getRight() == null || node.getLeft() == null){
+            return false;
+        }
+        if(node.getRight().getVal() > val){
+            // If val is less than the node, go to the left and recurse
+            return searchHelp(node.getLeft(), val);
+        }
+        else{
+            // If val is greater than the node, go to the right and recurse
+            return searchHelp(node.getRight(), val);
+        }
     }
 
     /**
@@ -56,6 +80,7 @@ public class BST {
      */
     public ArrayList<BSTNode> getInorder() {
         // TODO: Complete inorder traversal
+        //
         return null;
     }
 
@@ -63,8 +88,27 @@ public class BST {
      * @return ArrayList of BSTNodes in preorder
      */
     public ArrayList<BSTNode> getPreorder() {
-        // TODO: Complete preorder traversal
-        return null;
+        // TODO: Complete preorder traversal\
+        ArrayList<BSTNode> sorted = new ArrayList<BSTNode>();
+        if (root == null){
+            return sorted;
+        }
+        sorted.add(PreorderHelp(root));
+
+    }
+
+    public BSTNode PreorderHelp(BSTNode node){
+        if (node == null){
+            return null;
+        }
+        if (node.getLeft() == null){
+            if(node.getRight() == null){
+                return null;
+            }
+        }
+        else {
+            return node.getLeft();
+        }
     }
 
     /**
