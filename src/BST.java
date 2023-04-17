@@ -78,11 +78,12 @@ public class BST {
     /**
      * @return ArrayList of BSTNodes in inorder
      */
-    public ArrayList<BSTNode> getInorder() {
-        // TODO: Complete inorder traversal
-        //
-        return null;
-    }
+//    public ArrayList<BSTNode> getInorder() {
+//        // TODO: Complete inorder traversal
+////        BSTNode root = this.root;
+//////        ArrayList<>
+////        return null;
+//    }
 
     /**
      * @return ArrayList of BSTNodes in preorder
@@ -90,34 +91,27 @@ public class BST {
     public ArrayList<BSTNode> getPreorder() {
         // TODO: Complete preorder traversal\
         ArrayList<BSTNode> sorted = new ArrayList<BSTNode>();
-        if (root == null){
-            return sorted;
-        }
-        sorted.add(PreorderHelp(root));
-
+        sorted.add(root);
+        PreorderHelp(root, sorted);
+        return sorted;
     }
 
-    public BSTNode PreorderHelp(BSTNode node){
-        if (node == null){
-            return null;
+    public void PreorderHelp(BSTNode node, ArrayList<BSTNode> sorted){
+        if ((node.getLeft() == null) && (node.getRight() == null)){
+                return;
         }
-        if (node.getLeft() == null){
-            if(node.getRight() == null){
-                return null;
-            }
-        }
-        else {
-            return node.getLeft();
-        }
+        sorted.add(node);
+        PreorderHelp(node.getLeft(), sorted);
+        PreorderHelp(node.getRight(), sorted);
     }
 
     /**
      * @return ArrayList of BSTNodes in postorder
      */
-    public ArrayList<BSTNode> getPostorder() {
-        // TODO: Complete postorder traversal
-        return null;
-    }
+//    public ArrayList<BSTNode> getPostorder() {
+//        // TODO: Complete postorder traversal
+//        return null;
+//    }
 
     /**
      * Inserts the given integer value to the tree
@@ -125,19 +119,19 @@ public class BST {
      * root instance variable to be the root of the new modified tree.
      * @param val The value ot insert
      */
-    public void insert(int val) {
-        // TODO: Complete insert
-    }
+//    public void insert(int val) {
+//        // TODO: Complete insert
+//    }
 
     /**
      * Determines if the current BST is
      * a valid BST.
      * @return true if valid false otherwise
      */
-    public boolean isValidBST() {
-        // TODO: Optional Challenge!
-        return false;
-    }
+//    public boolean isValidBST() {
+//        // TODO: Optional Challenge!
+//        return false;
+//    }
 
     public static void main(String[] args) {
         // Tree to help you test your code
@@ -154,17 +148,17 @@ public class BST {
         ArrayList<BSTNode> sol = tree.getPreorder();
         printNodes(sol);
 
-        System.out.println("\nInorder traversal of binary tree is");
-        sol = tree.getInorder();
-        printNodes(sol);
-
-        System.out.println("\nPostorder traversal of binary tree is");
-        sol = tree.getPostorder();
-        printNodes(sol);
-
-        tree.insert(8);
-        System.out.println("\nInorder traversal of binary tree is");
-        sol = tree.getInorder();
-        printNodes(sol);
+//        System.out.println("\nInorder traversal of binary tree is");
+//        sol = tree.getInorder();
+//        printNodes(sol);
+//
+//        System.out.println("\nPostorder traversal of binary tree is");
+//        sol = tree.getPostorder();
+//        printNodes(sol);
+//
+//        tree.insert(8);
+//        System.out.println("\nInorder traversal of binary tree is");
+//        sol = tree.getInorder();
+//        printNodes(sol);
     }
 }
