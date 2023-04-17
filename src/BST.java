@@ -62,6 +62,7 @@ public class BST {
         if (node.getVal() == val) {
             return true;
         }
+        // If you've reached the end
         if (node.getRight() == null || node.getLeft() == null){
             return false;
         }
@@ -91,17 +92,21 @@ public class BST {
     public ArrayList<BSTNode> getPreorder() {
         // TODO: Complete preorder traversal\
         ArrayList<BSTNode> sorted = new ArrayList<BSTNode>();
-        sorted.add(root);
         PreorderHelp(root, sorted);
         return sorted;
     }
 
     public void PreorderHelp(BSTNode node, ArrayList<BSTNode> sorted){
-        if ((node.getLeft() == null) && (node.getRight() == null)){
+        // Add the current node, the first time it is visited
+        sorted.add(node);
+        // Base case
+        // If a node has no children, don't recurse on it
+        if((node.getLeft() == null) && (node.getRight() == null)){
                 return;
         }
-        sorted.add(node);
+        // First recurse to the left
         PreorderHelp(node.getLeft(), sorted);
+        // Then explore the right
         PreorderHelp(node.getRight(), sorted);
     }
 
